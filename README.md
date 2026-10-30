@@ -34,10 +34,12 @@ I measured retrieval, not just the final answers. I wrote 20 questions about my 
 | Keyword (TF-IDF) | 15/20 = **75%** |
 | Hybrid (merged with Reciprocal Rank Fusion) | 15/20 = **75%** |
 
+With 20 questions, each one is worth 5 percentage points.
+
 What I learned from this:
 - Embeddings alone did worst. Many of my questions contain exact terms and numbers ("64 hidden units", "AUC of 0.57"), and the small embedding model matches meaning better than exact wording.
-- Hybrid matched keyword search here, and I use it as the default because real questions are often paraphrased, where embeddings help.
-- Running `python evaluate.py --verbose` prints the four passages retrieved for every miss, which showed me whether the search or my accepted phrases were at fault. That led me to add one alternative phrase to the question set after my first run.
+- Hybrid matched keyword search here. I use it as the default because I expect embeddings to help on paraphrased questions, but my current question set reuses the papers' own wording and does not test that.
+- Running `python evaluate.py --verbose` prints the four passages retrieved for every miss, which showed me whether the search or my accepted phrases were at fault. After my first run it showed that one miss was a false miss: the retrieved passage did answer the question, but worded it differently ("2 LSTM layers (64 units each)" instead of "64 hidden units"). I added two alternative phrases for that question (`64 units`, `2 lstm layers`), which moved keyword and hybrid from 70% to 75%. The remaining misses are genuine retrieval failures, for example the exact AUC value and the number of HRV devices.
 
 ## Limitations
 - **Small test set.** 20 questions over 2 papers, so each question is worth 5 percentage points. Treat the numbers as indicative.
@@ -45,6 +47,13 @@ What I learned from this:
 - **Small local model.** Llama 3.2 3B sometimes stretches a passage into an unsupported claim. For example, it once explained SMOTE as a way to avoid overfitting when my paper says it addresses class imbalance (the paper's answer was dropout and early stopping). I check "Sources used" on every answer.
 - **PDF text only.** Tables and figures are not understood well, and scanned PDFs need selectable text.
 - **Evaluation covers retrieval.** I have not built an automatic score for answer quality.
+- **What the quoted numbers mean.** The LSTM in my NeuroCare project was trained on simulated daily labels, so its AUC of 0.57 (close to chance) is a prototype result, not evidence of predictive performance. This chatbot retrieves what the papers say. It does not validate their claims.
+
+## Next steps
+- Filter table-of-contents and reference pages at ingest time. In `--verbose` output they took up some of the top 4 slots.
+- Compare k=4 with k=6.
+- Add a cross-encoder reranker over the top 20 candidates.
+- Add paraphrased questions to the evaluation set, so dense and hybrid search are tested fairly.
 
 ## Tech stack
 Python 3.13, sentence-transformers (Hugging Face), FAISS, scikit-learn (TF-IDF), pypdf, Ollama with Llama 3.2 (3B), Streamlit, pytest.
@@ -92,6 +101,8 @@ tests/                  26 pytest tests
    .venv\Scripts\python.exe -m streamlit run app.py
    ```
    or chat in the terminal with `.venv\Scripts\python.exe chat_cli.py`.
+
+   Streamlit's file watcher may print long, harmless `torchvision` import errors from `transformers`. The included `.streamlit/config.toml` (`fileWatcherType = "none"`) silences them.
 
 ### Evaluate retrieval
 Replace the questions in `eval_questions.json` with your own (each needs `expected_phrases`), then:
