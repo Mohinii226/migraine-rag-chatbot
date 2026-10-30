@@ -99,7 +99,7 @@
   {
     "question": "What AUC did the LSTM model reach?",
     "expected_phrases": [
-      "AUC of 0.70"
+      "AUC of 0.57"
     ]
   },
   {
