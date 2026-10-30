@@ -31,8 +31,8 @@ I measured retrieval, not just the final answers. I wrote 20 questions about my 
 | Search mode | hit@4 |
 |---|---|
 | Dense (embeddings only) | 12/20 = **60%** |
-| Keyword (TF-IDF) | 14/20 = **70%** |
-| Hybrid (merged with Reciprocal Rank Fusion) | 14/20 = **70%** |
+| Keyword (TF-IDF) | 15/20 = **75%** |
+| Hybrid (merged with Reciprocal Rank Fusion) | 15/20 = **75%** |
 
 What I learned from this:
 - Embeddings alone did worst. Many of my questions contain exact terms and numbers ("64 hidden units", "AUC of 0.57"), and the small embedding model matches meaning better than exact wording.
