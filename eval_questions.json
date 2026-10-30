@@ -6,12 +6,14 @@
       "accuracy of 0.93"
     ]
   },
-  {
-    "question": "What is the architecture of the LSTM model?",
-    "expected_phrases": [
-      "64 hidden units",
-      "stacked LSTM layers"
-    ]
+ {
+  "question": "What is the architecture of the LSTM model?",
+  "expected_phrases": [
+    "64 hidden units",
+    "stacked lstm layers",
+    "64 units",
+    "2 lstm layers"
+   ]
   },
   {
     "question": "How was class imbalance handled during cross-validation?",
@@ -97,7 +99,7 @@
   {
     "question": "What AUC did the LSTM model reach?",
     "expected_phrases": [
-      "AUC of 0.57"
+      "AUC of 0.70"
     ]
   },
   {
