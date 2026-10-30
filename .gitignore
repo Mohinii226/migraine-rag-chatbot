@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+index/*
+!index/.gitkeep
+# Don't publish papers you don't own the rights to
+data/papers/*
+!data/papers/.gitkeep

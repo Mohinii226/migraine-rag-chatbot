@@ -1,0 +1,138 @@
+[
+  {
+    "question": "Which classical model was selected as the best for migraine subtype classification?",
+    "expected_phrases": [
+      "XGBoost (selected)",
+      "accuracy of 0.93"
+    ]
+  },
+  {
+    "question": "What is the architecture of the LSTM model?",
+    "expected_phrases": [
+      "64 hidden units",
+      "stacked LSTM layers"
+    ]
+  },
+  {
+    "question": "How was class imbalance handled during cross-validation?",
+    "expected_phrases": [
+      "SMOTE only on the training"
+    ]
+  },
+  {
+    "question": "How were the daily migraine labels for the sequence model created?",
+    "expected_phrases": [
+      "Bernoulli",
+      "simulated daily labels",
+      "simulated labels"
+    ]
+  },
+  {
+    "question": "Which questionnaires are included in the survey dataset?",
+    "expected_phrases": [
+      "PHQ-9"
+    ]
+  },
+  {
+    "question": "How were missing values in the sleep and HRV sequence data handled?",
+    "expected_phrases": [
+      "median-imputed",
+      "feature-wise medians"
+    ]
+  },
+  {
+    "question": "What limitation of existing migraine prediction systems does this work address?",
+    "expected_phrases": [
+      "isolated data sources",
+      "translational gap",
+      "deployment-ready interfaces"
+    ]
+  },
+  {
+    "question": "Which cross-validation method was used for hyperparameter tuning?",
+    "expected_phrases": [
+      "Stratified K-Fold"
+    ]
+  },
+  {
+    "question": "Which explainability methods are planned as future work for the LSTM outputs?",
+    "expected_phrases": [
+      "LIME",
+      "SHAP-based"
+    ]
+  },
+  {
+    "question": "Which regulatory pathway is mentioned for future clinical deployment?",
+    "expected_phrases": [
+      "Software as a Medical Device"
+    ]
+  },
+  {
+    "question": "How were missing values handled for categorical fields in the symptom dataset?",
+    "expected_phrases": [
+      "mode imputation for categorical fields"
+    ]
+  },
+  {
+    "question": "Which sequence architectures are proposed as future work?",
+    "expected_phrases": [
+      "temporal convolutional networks",
+      "alternative sequence architectures"
+    ]
+  },
+  {
+    "question": "Which migraine categories does the classifier tend to confuse?",
+    "expected_phrases": [
+      "probable migraine",
+      "clinically similar categories"
+    ]
+  },
+  {
+    "question": "What weighted F1-score did the XGBoost classifier achieve?",
+    "expected_phrases": [
+      "weighted F1-score of 0.92",
+      "F1-score of 0.92"
+    ]
+  },
+  {
+    "question": "What AUC did the LSTM model reach?",
+    "expected_phrases": [
+      "AUC of 0.57"
+    ]
+  },
+  {
+    "question": "What kind of labels was the LSTM trained on?",
+    "expected_phrases": [
+      "simulated daily labels",
+      "simulated labels",
+      "simulated outcomes",
+      "labels were simulated"
+    ]
+  },
+  {
+    "question": "How many devices or users contributed to the filtered HRV dataset?",
+    "expected_phrases": [
+      "49 devices"
+    ]
+  },
+  {
+    "question": "What is needed before the system can be used in routine care?",
+    "expected_phrases": [
+      "external validation"
+    ]
+  },
+  {
+    "question": "How is overfitting avoided when training the LSTM?",
+    "expected_phrases": [
+      "Early stopping on a validation set",
+      "Dropout layers to reduce overfitting",
+      "dropout of 0.2"
+    ]
+  },
+  {
+    "question": "Which plots are used to check whether predicted probabilities match observed frequencies?",
+    "expected_phrases": [
+      "calibration plots"
+    ]
+  }
+]
